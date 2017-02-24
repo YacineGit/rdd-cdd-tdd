@@ -1,8 +1,13 @@
 'use strict';
-
+/* dependencies*/ 
 const YQL = require('yql');
 const _ = require('lodash');
-
+/**
+ * Exportation.
+ * 
+ * @param {options} - Correpond to cli.input.
+ * @param {callback}  - Relance.
+ */
 module.exports = (opts, callback) => {
 	opts = opts || [];
 

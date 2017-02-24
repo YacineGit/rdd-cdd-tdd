@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-const meow = require('meow');
+/* dependencies*/ 
+const meow = require('meow'); 
 const chalk = require('chalk');
 const updateNotifier = require('update-notifier');
 const pkg = require('./package.json');
 const weather = require('./');
+
 
 const cli = meow({
 	help: [
@@ -25,12 +27,22 @@ const cli = meow({
 	]
 });
 
-function _toCelcius(temp) {
+/**
+ * Represents the conversion to Celcius
+ * @constructor
+ * @param {number}  - 
+ */
+function _toCelcius(temp) { 
 	return Math.round(((temp - 32) * 5) / 9);
 }
 
 updateNotifier({ pkg}).notify();
 
+/**
+ * Build of application
+ * @param {error}  - If there is an error.
+ * @param {data} result - The result of query about city.
+ */
 weather(cli.input, (err, result) => {
 	if (err) {
 		console.log(chalk.bold.red(err));
